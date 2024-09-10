@@ -1,0 +1,1342 @@
+[2024-09-09 09:45:04 +0300] [17497] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 09:45:04 +0300] [17497] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (17497)
+[2024-09-09 09:45:04 +0300] [17497] [INFO] Using worker: sync
+[2024-09-09 09:45:04 +0300] [17499] [INFO] Booting worker with pid: 17499
+[2024-09-09 09:45:04 +0300] [17500] [INFO] Booting worker with pid: 17500
+[2024-09-09 09:45:04 +0300] [17501] [INFO] Booting worker with pid: 17501
+[2024-09-09 09:51:34,658] ERROR in app: Exception on /admin/register/ [POST]
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 76, in inner
+    return self._run_view(f, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 384, in _run_view
+    return fn(self, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 135, in register_view
+    if helpers.validate_form_on_submit(form):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/helpers.py", line 76, in validate_form_on_submit
+    return is_form_submitted() and form.validate()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 86, in validate_login
+    if db.session.query(User).filter_by(login=self.login.data).count() > 0:
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 3112, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2805, in scalar
+    ret = self.one()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2778, in one
+    return self._iter().one()  # type: ignore
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1]
+[parameters: ('cubinez85',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-09-09 09:56:04,031] ERROR in app: Exception on /admin/register/ [POST]
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 76, in inner
+    return self._run_view(f, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 384, in _run_view
+    return fn(self, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 135, in register_view
+    if helpers.validate_form_on_submit(form):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/helpers.py", line 76, in validate_form_on_submit
+    return is_form_submitted() and form.validate()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 86, in validate_login
+    if db.session.query(User).filter_by(login=self.login.data).count() > 0:
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 3112, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2805, in scalar
+    ret = self.one()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2778, in one
+    return self._iter().one()  # type: ignore
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1]
+[parameters: ('cubinez85',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-09-09 09:59:10,829] ERROR in app: Exception on /admin/register/ [POST]
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 76, in inner
+    return self._run_view(f, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 384, in _run_view
+    return fn(self, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 135, in register_view
+    if helpers.validate_form_on_submit(form):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/helpers.py", line 76, in validate_form_on_submit
+    return is_form_submitted() and form.validate()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 86, in validate_login
+    if db.session.query(User).filter_by(login=self.login.data).count() > 0:
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 3112, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2805, in scalar
+    ret = self.one()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2778, in one
+    return self._iter().one()  # type: ignore
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1]
+[parameters: ('cubinez85',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-09-09 16:31:51 +0300] [786] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 16:31:51 +0300] [786] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (786)
+[2024-09-09 16:31:51 +0300] [786] [INFO] Using worker: sync
+[2024-09-09 16:31:51 +0300] [886] [INFO] Booting worker with pid: 886
+[2024-09-09 16:31:51 +0300] [940] [INFO] Booting worker with pid: 940
+[2024-09-09 16:31:51 +0300] [950] [INFO] Booting worker with pid: 950
+[2024-09-09 17:03:25 +0300] [786] [INFO] Handling signal: term
+[2024-09-09 17:03:25 +0300] [886] [INFO] Worker exiting (pid: 886)
+[2024-09-09 17:03:25 +0300] [950] [INFO] Worker exiting (pid: 950)
+[2024-09-09 17:03:25 +0300] [940] [INFO] Worker exiting (pid: 940)
+[2024-09-09 17:03:25 +0300] [786] [INFO] Shutting down: Master
+[2024-09-09 17:03:26 +0300] [9073] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 17:03:26 +0300] [9073] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (9073)
+[2024-09-09 17:03:26 +0300] [9073] [INFO] Using worker: sync
+[2024-09-09 17:03:26 +0300] [9074] [INFO] Booting worker with pid: 9074
+[2024-09-09 17:03:26 +0300] [9076] [INFO] Booting worker with pid: 9076
+[2024-09-09 17:03:26 +0300] [9074] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from app import app
+  File "/var/www/flask-admin/examples/auth-flask-login/app/__init__.py", line 12, in <module>
+    from app import routes
+ImportError: cannot import name 'routes' from partially initialized module 'app' (most likely due to a circular import) (/var/www/flask-admin/examples/auth-flask-login/app/__init__.py)
+[2024-09-09 17:03:26 +0300] [9074] [INFO] Worker exiting (pid: 9074)
+[2024-09-09 17:03:26 +0300] [9077] [INFO] Booting worker with pid: 9077
+[2024-09-09 17:03:26 +0300] [9073] [ERROR] Worker (pid:9074) exited with code 3
+[2024-09-09 17:03:27 +0300] [9076] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from app import app
+  File "/var/www/flask-admin/examples/auth-flask-login/app/__init__.py", line 12, in <module>
+    from app import routes
+ImportError: cannot import name 'routes' from partially initialized module 'app' (most likely due to a circular import) (/var/www/flask-admin/examples/auth-flask-login/app/__init__.py)
+[2024-09-09 17:03:27 +0300] [9076] [INFO] Worker exiting (pid: 9076)
+[2024-09-09 17:03:27 +0300] [9077] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from app import app
+  File "/var/www/flask-admin/examples/auth-flask-login/app/__init__.py", line 12, in <module>
+    from app import routes
+ImportError: cannot import name 'routes' from partially initialized module 'app' (most likely due to a circular import) (/var/www/flask-admin/examples/auth-flask-login/app/__init__.py)
+[2024-09-09 17:03:27 +0300] [9077] [INFO] Worker exiting (pid: 9077)
+[2024-09-09 17:03:27 +0300] [9073] [ERROR] Worker (pid:9076) exited with code 3
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 201, in run
+    self.manage_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 570, in manage_workers
+    self.spawn_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 642, in spawn_workers
+    time.sleep(0.1 * random.random())
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 228, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 341, in halt
+    self.stop()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 395, in stop
+    time.sleep(0.1)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+[2024-09-09 17:03:28 +0300] [9083] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 17:03:28 +0300] [9083] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (9083)
+[2024-09-09 17:03:28 +0300] [9083] [INFO] Using worker: sync
+[2024-09-09 17:03:28 +0300] [9084] [INFO] Booting worker with pid: 9084
+[2024-09-09 17:03:28 +0300] [9084] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from app import app
+  File "/var/www/flask-admin/examples/auth-flask-login/app/__init__.py", line 12, in <module>
+    from app import routes
+ImportError: cannot import name 'routes' from partially initialized module 'app' (most likely due to a circular import) (/var/www/flask-admin/examples/auth-flask-login/app/__init__.py)
+[2024-09-09 17:03:28 +0300] [9084] [INFO] Worker exiting (pid: 9084)
+[2024-09-09 17:03:28 +0300] [9086] [INFO] Booting worker with pid: 9086
+[2024-09-09 17:03:28 +0300] [9083] [ERROR] Worker (pid:9084) exited with code 3
+[2024-09-09 17:03:28 +0300] [9086] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from app import app
+  File "/var/www/flask-admin/examples/auth-flask-login/app/__init__.py", line 12, in <module>
+    from app import routes
+ImportError: cannot import name 'routes' from partially initialized module 'app' (most likely due to a circular import) (/var/www/flask-admin/examples/auth-flask-login/app/__init__.py)
+[2024-09-09 17:03:28 +0300] [9086] [INFO] Worker exiting (pid: 9086)
+[2024-09-09 17:03:28 +0300] [9083] [ERROR] Worker (pid:9086) exited with code 3
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 201, in run
+    self.manage_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 570, in manage_workers
+    self.spawn_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 642, in spawn_workers
+    time.sleep(0.1 * random.random())
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 228, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 341, in halt
+    self.stop()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 395, in stop
+    time.sleep(0.1)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+[2024-09-09 17:03:30 +0300] [9095] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 17:03:30 +0300] [9095] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (9095)
+[2024-09-09 17:03:30 +0300] [9095] [INFO] Using worker: sync
+[2024-09-09 17:03:30 +0300] [9096] [INFO] Booting worker with pid: 9096
+[2024-09-09 17:03:30 +0300] [9096] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from app import app
+  File "/var/www/flask-admin/examples/auth-flask-login/app/__init__.py", line 12, in <module>
+    from app import routes
+ImportError: cannot import name 'routes' from partially initialized module 'app' (most likely due to a circular import) (/var/www/flask-admin/examples/auth-flask-login/app/__init__.py)
+[2024-09-09 17:03:30 +0300] [9096] [INFO] Worker exiting (pid: 9096)
+[2024-09-09 17:03:30 +0300] [9095] [ERROR] Worker (pid:9096) exited with code 3
+[2024-09-09 17:03:30 +0300] [9095] [ERROR] Shutting down: Master
+[2024-09-09 17:03:30 +0300] [9095] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 17:03:33 +0300] [9109] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 17:03:33 +0300] [9109] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (9109)
+[2024-09-09 17:03:33 +0300] [9109] [INFO] Using worker: sync
+[2024-09-09 17:03:33 +0300] [9110] [INFO] Booting worker with pid: 9110
+[2024-09-09 17:03:33 +0300] [9110] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from app import app
+  File "/var/www/flask-admin/examples/auth-flask-login/app/__init__.py", line 12, in <module>
+    from app import routes
+ImportError: cannot import name 'routes' from partially initialized module 'app' (most likely due to a circular import) (/var/www/flask-admin/examples/auth-flask-login/app/__init__.py)
+[2024-09-09 17:03:33 +0300] [9110] [INFO] Worker exiting (pid: 9110)
+[2024-09-09 17:03:33 +0300] [9112] [INFO] Booting worker with pid: 9112
+[2024-09-09 17:03:33 +0300] [9109] [ERROR] Worker (pid:9110) exited with code 3
+[2024-09-09 17:03:33 +0300] [9112] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from app import app
+  File "/var/www/flask-admin/examples/auth-flask-login/app/__init__.py", line 12, in <module>
+    from app import routes
+ImportError: cannot import name 'routes' from partially initialized module 'app' (most likely due to a circular import) (/var/www/flask-admin/examples/auth-flask-login/app/__init__.py)
+[2024-09-09 17:03:33 +0300] [9112] [INFO] Worker exiting (pid: 9112)
+[2024-09-09 17:03:33 +0300] [9109] [ERROR] Worker (pid:9112) exited with code 3
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 201, in run
+    self.manage_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 570, in manage_workers
+    self.spawn_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 642, in spawn_workers
+    time.sleep(0.1 * random.random())
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 228, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 341, in halt
+    self.stop()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 395, in stop
+    time.sleep(0.1)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+[2024-09-09 17:16:29 +0300] [12179] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 17:16:29 +0300] [12179] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (12179)
+[2024-09-09 17:16:29 +0300] [12179] [INFO] Using worker: sync
+[2024-09-09 17:16:29 +0300] [12180] [INFO] Booting worker with pid: 12180
+[2024-09-09 17:16:29 +0300] [12182] [INFO] Booting worker with pid: 12182
+[2024-09-09 17:16:29 +0300] [12183] [INFO] Booting worker with pid: 12183
+[2024-09-09 18:24:43 +0300] [12179] [INFO] Handling signal: term
+[2024-09-09 18:24:43 +0300] [12182] [INFO] Worker exiting (pid: 12182)
+[2024-09-09 18:24:43 +0300] [12180] [INFO] Worker exiting (pid: 12180)
+[2024-09-09 18:24:43 +0300] [12183] [INFO] Worker exiting (pid: 12183)
+[2024-09-09 18:24:43 +0300] [12179] [INFO] Shutting down: Master
+[2024-09-09 18:24:44 +0300] [28714] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:24:44 +0300] [28714] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (28714)
+[2024-09-09 18:24:44 +0300] [28714] [INFO] Using worker: sync
+[2024-09-09 18:24:44 +0300] [28715] [INFO] Booting worker with pid: 28715
+[2024-09-09 18:24:44 +0300] [28715] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1
+    from auth-flask-login.app import app
+             ^
+SyntaxError: invalid syntax
+[2024-09-09 18:24:45 +0300] [28715] [INFO] Worker exiting (pid: 28715)
+[2024-09-09 18:24:45 +0300] [28714] [ERROR] Worker (pid:28715) exited with code 3
+[2024-09-09 18:24:45 +0300] [28714] [ERROR] Shutting down: Master
+[2024-09-09 18:24:45 +0300] [28714] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 18:24:46 +0300] [28720] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:24:46 +0300] [28720] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (28720)
+[2024-09-09 18:24:46 +0300] [28720] [INFO] Using worker: sync
+[2024-09-09 18:24:46 +0300] [28722] [INFO] Booting worker with pid: 28722
+[2024-09-09 18:24:46 +0300] [28722] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1
+    from auth-flask-login.app import app
+             ^
+SyntaxError: invalid syntax
+[2024-09-09 18:24:46 +0300] [28722] [INFO] Worker exiting (pid: 28722)
+[2024-09-09 18:24:46 +0300] [28720] [ERROR] Worker (pid:28722) exited with code 3
+[2024-09-09 18:24:46 +0300] [28720] [ERROR] Shutting down: Master
+[2024-09-09 18:24:46 +0300] [28720] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 18:24:48 +0300] [28731] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:24:48 +0300] [28731] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (28731)
+[2024-09-09 18:24:48 +0300] [28731] [INFO] Using worker: sync
+[2024-09-09 18:24:48 +0300] [28733] [INFO] Booting worker with pid: 28733
+[2024-09-09 18:24:48 +0300] [28733] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1
+    from auth-flask-login.app import app
+             ^
+SyntaxError: invalid syntax
+[2024-09-09 18:24:48 +0300] [28733] [INFO] Worker exiting (pid: 28733)
+[2024-09-09 18:24:48 +0300] [28731] [ERROR] Worker (pid:28733) exited with code 3
+[2024-09-09 18:24:48 +0300] [28731] [ERROR] Shutting down: Master
+[2024-09-09 18:24:48 +0300] [28731] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 18:24:51 +0300] [28745] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:24:51 +0300] [28745] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (28745)
+[2024-09-09 18:24:51 +0300] [28745] [INFO] Using worker: sync
+[2024-09-09 18:24:51 +0300] [28747] [INFO] Booting worker with pid: 28747
+[2024-09-09 18:24:51 +0300] [28747] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1
+    from auth-flask-login.app import app
+             ^
+SyntaxError: invalid syntax
+[2024-09-09 18:24:51 +0300] [28747] [INFO] Worker exiting (pid: 28747)
+[2024-09-09 18:24:51 +0300] [28745] [ERROR] Worker (pid:28747) exited with code 3
+[2024-09-09 18:24:51 +0300] [28745] [ERROR] Shutting down: Master
+[2024-09-09 18:24:51 +0300] [28745] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 18:25:32 +0300] [28917] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:25:32 +0300] [28917] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (28917)
+[2024-09-09 18:25:32 +0300] [28917] [INFO] Using worker: sync
+[2024-09-09 18:25:32 +0300] [28918] [INFO] Booting worker with pid: 28918
+[2024-09-09 18:25:32 +0300] [28918] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from .app import app
+ImportError: attempted relative import with no known parent package
+[2024-09-09 18:25:32 +0300] [28918] [INFO] Worker exiting (pid: 28918)
+[2024-09-09 18:25:32 +0300] [28917] [ERROR] Worker (pid:28918) exited with code 3
+[2024-09-09 18:25:32 +0300] [28917] [ERROR] Shutting down: Master
+[2024-09-09 18:25:32 +0300] [28917] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 18:25:33 +0300] [28924] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:25:33 +0300] [28924] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (28924)
+[2024-09-09 18:25:33 +0300] [28924] [INFO] Using worker: sync
+[2024-09-09 18:25:33 +0300] [28926] [INFO] Booting worker with pid: 28926
+[2024-09-09 18:25:33 +0300] [28926] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from .app import app
+ImportError: attempted relative import with no known parent package
+[2024-09-09 18:25:33 +0300] [28926] [INFO] Worker exiting (pid: 28926)
+[2024-09-09 18:25:33 +0300] [28924] [ERROR] Worker (pid:28926) exited with code 3
+[2024-09-09 18:25:33 +0300] [28924] [ERROR] Shutting down: Master
+[2024-09-09 18:25:33 +0300] [28924] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 18:25:35 +0300] [28935] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:25:35 +0300] [28935] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (28935)
+[2024-09-09 18:25:35 +0300] [28935] [INFO] Using worker: sync
+[2024-09-09 18:25:35 +0300] [28936] [INFO] Booting worker with pid: 28936
+[2024-09-09 18:25:35 +0300] [28936] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from .app import app
+ImportError: attempted relative import with no known parent package
+[2024-09-09 18:25:35 +0300] [28936] [INFO] Worker exiting (pid: 28936)
+[2024-09-09 18:25:35 +0300] [28935] [ERROR] Worker (pid:28936) exited with code 3
+[2024-09-09 18:25:35 +0300] [28935] [ERROR] Shutting down: Master
+[2024-09-09 18:25:35 +0300] [28935] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 18:25:38 +0300] [28949] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:25:38 +0300] [28949] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (28949)
+[2024-09-09 18:25:38 +0300] [28949] [INFO] Using worker: sync
+[2024-09-09 18:25:38 +0300] [28950] [INFO] Booting worker with pid: 28950
+[2024-09-09 18:25:38 +0300] [28951] [INFO] Booting worker with pid: 28951
+[2024-09-09 18:25:38 +0300] [28950] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from .app import app
+ImportError: attempted relative import with no known parent package
+[2024-09-09 18:25:38 +0300] [28950] [INFO] Worker exiting (pid: 28950)
+[2024-09-09 18:25:38 +0300] [28951] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/flask-admin/examples/auth-flask-login/wsgi.py", line 1, in <module>
+    from .app import app
+ImportError: attempted relative import with no known parent package
+[2024-09-09 18:25:38 +0300] [28951] [INFO] Worker exiting (pid: 28951)
+[2024-09-09 18:25:38 +0300] [28949] [ERROR] Worker (pid:28950) exited with code 3
+[2024-09-09 18:25:38 +0300] [28949] [ERROR] Worker (pid:28951) was sent SIGTERM!
+[2024-09-09 18:25:38 +0300] [28949] [ERROR] Shutting down: Master
+[2024-09-09 18:25:38 +0300] [28949] [ERROR] Reason: Worker failed to boot.
+[2024-09-09 18:26:25 +0300] [29143] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:26:25 +0300] [29143] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (29143)
+[2024-09-09 18:26:25 +0300] [29143] [INFO] Using worker: sync
+[2024-09-09 18:26:25 +0300] [29144] [INFO] Booting worker with pid: 29144
+[2024-09-09 18:26:25 +0300] [29145] [INFO] Booting worker with pid: 29145
+[2024-09-09 18:26:25 +0300] [29146] [INFO] Booting worker with pid: 29146
+[2024-09-09 18:27:39,076] ERROR in app: Exception on /admin/register/ [POST]
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 76, in inner
+    return self._run_view(f, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 384, in _run_view
+    return fn(self, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 135, in register_view
+    if helpers.validate_form_on_submit(form):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/helpers.py", line 76, in validate_form_on_submit
+    return is_form_submitted() and form.validate()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 86, in validate_login
+    if db.session.query(User).filter_by(login=self.login.data).count() > 0:
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 3112, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2805, in scalar
+    ret = self.one()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2778, in one
+    return self._iter().one()  # type: ignore
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1]
+[parameters: ('cubinez85',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-09-09 18:53:43 +0300] [29143] [INFO] Handling signal: term
+[2024-09-09 18:53:43 +0300] [29144] [INFO] Worker exiting (pid: 29144)
+[2024-09-09 18:53:43 +0300] [29146] [INFO] Worker exiting (pid: 29146)
+[2024-09-09 18:53:43 +0300] [29145] [INFO] Worker exiting (pid: 29145)
+[2024-09-09 18:53:44 +0300] [29143] [INFO] Shutting down: Master
+[2024-09-09 18:53:45 +0300] [35591] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 18:53:45 +0300] [35591] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (35591)
+[2024-09-09 18:53:45 +0300] [35591] [INFO] Using worker: sync
+[2024-09-09 18:53:45 +0300] [35593] [INFO] Booting worker with pid: 35593
+[2024-09-09 18:53:45 +0300] [35594] [INFO] Booting worker with pid: 35594
+[2024-09-09 18:53:45 +0300] [35595] [INFO] Booting worker with pid: 35595
+[2024-09-09 18:53:59,716] ERROR in app: Exception on /admin/register/ [POST]
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 76, in inner
+    return self._run_view(f, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 384, in _run_view
+    return fn(self, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 135, in register_view
+    if helpers.validate_form_on_submit(form):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/helpers.py", line 76, in validate_form_on_submit
+    return is_form_submitted() and form.validate()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 86, in validate_login
+    if db.session.query(User).filter_by(login=self.login.data).count() > 0:
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 3112, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2805, in scalar
+    ret = self.one()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2778, in one
+    return self._iter().one()  # type: ignore
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1]
+[parameters: ('cubinez85',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-09-09 19:52:56 +0300] [35591] [INFO] Handling signal: term
+[2024-09-09 19:52:56 +0300] [35593] [INFO] Worker exiting (pid: 35593)
+[2024-09-09 19:52:56 +0300] [35595] [INFO] Worker exiting (pid: 35595)
+[2024-09-09 19:52:56 +0300] [35594] [INFO] Worker exiting (pid: 35594)
+[2024-09-09 19:52:57 +0300] [35591] [INFO] Shutting down: Master
+[2024-09-09 19:52:58 +0300] [49693] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 19:52:58 +0300] [49693] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (49693)
+[2024-09-09 19:52:58 +0300] [49693] [INFO] Using worker: sync
+[2024-09-09 19:52:58 +0300] [49695] [INFO] Booting worker with pid: 49695
+[2024-09-09 19:52:58 +0300] [49696] [INFO] Booting worker with pid: 49696
+[2024-09-09 19:52:58 +0300] [49697] [INFO] Booting worker with pid: 49697
+[2024-09-09 19:53:10,650] ERROR in app: Exception on /admin/register/ [POST]
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 76, in inner
+    return self._run_view(f, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 384, in _run_view
+    return fn(self, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 135, in register_view
+    if helpers.validate_form_on_submit(form):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/helpers.py", line 76, in validate_form_on_submit
+    return is_form_submitted() and form.validate()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 86, in validate_login
+    if db.session.query(User).filter_by(login=self.login.data).count() > 0:
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 3112, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2805, in scalar
+    ret = self.one()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2778, in one
+    return self._iter().one()  # type: ignore
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1]
+[parameters: ('cubinez85',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-09-09 19:53:43,898] ERROR in app: Exception on /admin/register/ [POST]
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 76, in inner
+    return self._run_view(f, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/base.py", line 384, in _run_view
+    return fn(self, *args, **kwargs)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 135, in register_view
+    if helpers.validate_form_on_submit(form):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/flask_admin/helpers.py", line 76, in validate_form_on_submit
+    return is_form_submitted() and form.validate()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/wtforms/fields/core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "/var/www/flask-admin/examples/auth-flask-login/app.py", line 86, in validate_login
+    if db.session.query(User).filter_by(login=self.login.data).count() > 0:
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 3112, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2805, in scalar
+    ret = self.one()
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2778, in one
+    return self._iter().one()  # type: ignore
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/var/www/flask-admin/examples/auth-flask-login/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1]
+[parameters: ('cubinez85',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2024-09-09 20:37:09 +0300] [49693] [INFO] Handling signal: term
+[2024-09-09 20:37:09 +0300] [49695] [INFO] Worker exiting (pid: 49695)
+[2024-09-09 20:37:09 +0300] [49696] [INFO] Worker exiting (pid: 49696)
+[2024-09-09 20:37:09 +0300] [49697] [INFO] Worker exiting (pid: 49697)
+[2024-09-09 20:37:09 +0300] [49693] [INFO] Shutting down: Master
+[2024-09-09 20:37:10 +0300] [60552] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 20:37:10 +0300] [60552] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (60552)
+[2024-09-09 20:37:10 +0300] [60552] [INFO] Using worker: sync
+[2024-09-09 20:37:10 +0300] [60553] [INFO] Booting worker with pid: 60553
+[2024-09-09 20:37:10 +0300] [60554] [INFO] Booting worker with pid: 60554
+[2024-09-09 20:37:10 +0300] [60556] [INFO] Booting worker with pid: 60556
+[2024-09-09 20:51:46 +0300] [60552] [INFO] Handling signal: term
+[2024-09-09 20:51:46 +0300] [60553] [INFO] Worker exiting (pid: 60553)
+[2024-09-09 20:51:46 +0300] [60554] [INFO] Worker exiting (pid: 60554)
+[2024-09-09 20:51:46 +0300] [60556] [INFO] Worker exiting (pid: 60556)
+[2024-09-09 20:51:46 +0300] [60552] [INFO] Shutting down: Master
+[2024-09-09 20:51:47 +0300] [64026] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 20:51:47 +0300] [64026] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (64026)
+[2024-09-09 20:51:47 +0300] [64026] [INFO] Using worker: sync
+[2024-09-09 20:51:47 +0300] [64027] [INFO] Booting worker with pid: 64027
+[2024-09-09 20:51:47 +0300] [64028] [INFO] Booting worker with pid: 64028
+[2024-09-09 20:51:48 +0300] [64030] [INFO] Booting worker with pid: 64030
+[2024-09-09 20:57:21 +0300] [64026] [INFO] Handling signal: term
+[2024-09-09 20:57:21 +0300] [64027] [INFO] Worker exiting (pid: 64027)
+[2024-09-09 20:57:21 +0300] [64028] [INFO] Worker exiting (pid: 64028)
+[2024-09-09 20:57:21 +0300] [64030] [INFO] Worker exiting (pid: 64030)
+[2024-09-09 20:57:21 +0300] [64026] [INFO] Shutting down: Master
+[2024-09-09 20:57:23 +0300] [65354] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 20:57:23 +0300] [65354] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (65354)
+[2024-09-09 20:57:23 +0300] [65354] [INFO] Using worker: sync
+[2024-09-09 20:57:23 +0300] [65355] [INFO] Booting worker with pid: 65355
+[2024-09-09 20:57:23 +0300] [65357] [INFO] Booting worker with pid: 65357
+[2024-09-09 20:57:23 +0300] [65358] [INFO] Booting worker with pid: 65358
+[2024-09-09 20:59:16 +0300] [65354] [INFO] Handling signal: term
+[2024-09-09 20:59:16 +0300] [65357] [INFO] Worker exiting (pid: 65357)
+[2024-09-09 20:59:16 +0300] [65355] [INFO] Worker exiting (pid: 65355)
+[2024-09-09 20:59:16 +0300] [65358] [INFO] Worker exiting (pid: 65358)
+[2024-09-09 20:59:16 +0300] [65354] [INFO] Shutting down: Master
+[2024-09-09 20:59:18 +0300] [65809] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 20:59:18 +0300] [65809] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (65809)
+[2024-09-09 20:59:18 +0300] [65809] [INFO] Using worker: sync
+[2024-09-09 20:59:18 +0300] [65810] [INFO] Booting worker with pid: 65810
+[2024-09-09 20:59:18 +0300] [65811] [INFO] Booting worker with pid: 65811
+[2024-09-09 20:59:18 +0300] [65812] [INFO] Booting worker with pid: 65812
+[2024-09-09 21:21:00 +0300] [65809] [INFO] Handling signal: term
+[2024-09-09 21:21:00 +0300] [65810] [INFO] Worker exiting (pid: 65810)
+[2024-09-09 21:21:00 +0300] [65811] [INFO] Worker exiting (pid: 65811)
+[2024-09-09 21:21:00 +0300] [65812] [INFO] Worker exiting (pid: 65812)
+[2024-09-09 21:21:00 +0300] [65809] [INFO] Shutting down: Master
+[2024-09-09 21:21:01 +0300] [70933] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 21:21:01 +0300] [70933] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (70933)
+[2024-09-09 21:21:01 +0300] [70933] [INFO] Using worker: sync
+[2024-09-09 21:21:01 +0300] [70934] [INFO] Booting worker with pid: 70934
+[2024-09-09 21:21:01 +0300] [70936] [INFO] Booting worker with pid: 70936
+[2024-09-09 21:21:01 +0300] [70937] [INFO] Booting worker with pid: 70937
+[2024-09-09 21:32:34 +0300] [70933] [INFO] Handling signal: term
+[2024-09-09 21:32:34 +0300] [70934] [INFO] Worker exiting (pid: 70934)
+[2024-09-09 21:32:34 +0300] [70936] [INFO] Worker exiting (pid: 70936)
+[2024-09-09 21:32:34 +0300] [70937] [INFO] Worker exiting (pid: 70937)
+[2024-09-09 21:32:34 +0300] [70933] [INFO] Shutting down: Master
+[2024-09-09 21:32:35 +0300] [73627] [INFO] Starting gunicorn 23.0.0
+[2024-09-09 21:32:35 +0300] [73627] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (73627)
+[2024-09-09 21:32:35 +0300] [73627] [INFO] Using worker: sync
+[2024-09-09 21:32:35 +0300] [73628] [INFO] Booting worker with pid: 73628
+[2024-09-09 21:32:35 +0300] [73630] [INFO] Booting worker with pid: 73630
+[2024-09-09 21:32:35 +0300] [73631] [INFO] Booting worker with pid: 73631
+[2024-09-10 09:43:48 +0300] [913] [INFO] Starting gunicorn 23.0.0
+[2024-09-10 09:43:48 +0300] [913] [INFO] Listening at: unix:/var/www/flask-admin/examples/auth-flask-login/ipc.sock (913)
+[2024-09-10 09:43:48 +0300] [913] [INFO] Using worker: sync
+[2024-09-10 09:43:48 +0300] [963] [INFO] Booting worker with pid: 963
+[2024-09-10 09:43:48 +0300] [979] [INFO] Booting worker with pid: 979
+[2024-09-10 09:43:49 +0300] [983] [INFO] Booting worker with pid: 983

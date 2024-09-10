@@ -1,0 +1,49 @@
+2024-09-09 09:51:34,653 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-09-09 09:51:34,657 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1
+2024-09-09 09:51:34,658 INFO sqlalchemy.engine.Engine [generated in 0.00022s] ('cubinez85',)
+2024-09-09 09:51:34,663 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-09-09 09:56:04,030 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-09-09 09:56:04,031 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1
+2024-09-09 09:56:04,031 INFO sqlalchemy.engine.Engine [cached since 269.4s ago] ('cubinez85',)
+2024-09-09 09:56:04,032 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-09-09 09:59:10,827 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-09-09 09:59:10,828 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1
+2024-09-09 09:59:10,828 INFO sqlalchemy.engine.Engine [cached since 456.2s ago] ('cubinez85',)
+2024-09-09 09:59:10,830 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-09-09 18:27:39,071 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-09-09 18:27:39,076 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1
+2024-09-09 18:27:39,076 INFO sqlalchemy.engine.Engine [generated in 0.00020s] ('cubinez85',)
+2024-09-09 18:27:39,095 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-09-09 18:53:59,712 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-09-09 18:53:59,716 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1
+2024-09-09 18:53:59,716 INFO sqlalchemy.engine.Engine [generated in 0.00020s] ('cubinez85',)
+2024-09-09 18:53:59,720 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-09-09 19:53:10,645 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-09-09 19:53:10,650 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1
+2024-09-09 19:53:10,650 INFO sqlalchemy.engine.Engine [generated in 0.00027s] ('cubinez85',)
+2024-09-09 19:53:10,654 INFO sqlalchemy.engine.Engine ROLLBACK
+2024-09-09 19:53:43,892 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-09-09 19:53:43,897 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT user.id AS user_id, user.first_name AS user_first_name, user.last_name AS user_last_name, user.login AS user_login, user.email AS user_email, user.password AS user_password 
+FROM user 
+WHERE user.login = ?) AS anon_1
+2024-09-09 19:53:43,897 INFO sqlalchemy.engine.Engine [generated in 0.00024s] ('cubinez85',)
+2024-09-09 19:53:43,903 INFO sqlalchemy.engine.Engine ROLLBACK
